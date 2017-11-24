@@ -57,6 +57,9 @@ class FeedParser
         end
        
         commit = JSON.parse(commit)
+        author = "\n"
+        author << "<b><pre>" << commit["author"]["name"] << "</pre></b>\n\n"
+        entry.css('content').first.content += author
         diff = "<pre>"
         (commit["files"] || []).each do |f|
           f_diff = f['patch']
